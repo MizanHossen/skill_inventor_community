@@ -7,27 +7,27 @@ class NavBarProvider with ChangeNotifier {
     NavBar(
       level: "",
       iconData: Icons.home,
-      widget: FeedScreen(),
+      widget: const FeedScreen(),
     ),
     NavBar(
       level: "",
       iconData: Icons.search,
-      widget: Center(child: Text("search")),
+      widget: const Center(child: Text("search")),
     ),
     NavBar(
       level: "",
       iconData: Icons.add_circle,
-      widget: AddPostScreen(),
+      widget: const AddPostScreen(),
     ),
     NavBar(
       level: "",
       iconData: Icons.favorite,
-      widget: Center(child: Text("favorite")),
+      widget: const Center(child: Text("favorite")),
     ),
     NavBar(
       level: "",
       iconData: Icons.person,
-      widget: Center(child: Text("profile")),
+      widget: const Center(child: Text("profile")),
     ),
   ];
 

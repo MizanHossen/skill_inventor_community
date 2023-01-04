@@ -95,16 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   Image.asset(
                     "assets/images/sk_logo.png",
                   ),
-                  // SizedBox(height: 50),
-                  // Container(
-                  //   width: double.infinity,
-                  //   alignment: Alignment.center,
-                  //   child: const Text(
-                  //     "Skill Inventor Community",
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                  //   ),
-                  // ),
+
                   const SizedBox(height: 20),
 
                   //Circular image
@@ -166,15 +157,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  //text field for pass
-
-                  // TextFieldInput(
-                  //   textEditingController: _passwordController,
-                  //   hintText: "Enter Your Password",
-                  //   textInputType: TextInputType.emailAddress,
-                  //   isPass: true,
-                  // ),
 
                   SizedBox(
                     width: Responsive.isMobile(context)
