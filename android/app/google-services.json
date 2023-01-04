@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "637282670082",
+    "project_id": "skill-inventor-community",
+    "storage_bucket": "skill-inventor-community.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637282670082:android:c055d2470e601fd628391b",
+        "android_client_info": {
+          "package_name": "com.example.skill_inventor_community"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637282670082-pj3lav5l5hqvv3ce4grqqt11d5ai3cde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApi-J6-f0-ID228fs3MoBK1z7gn3ENJmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637282670082-pj3lav5l5hqvv3ce4grqqt11d5ai3cde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
