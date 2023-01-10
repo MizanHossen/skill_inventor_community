@@ -49,7 +49,7 @@ class _LikeAnimationState extends State<LikeAnimation>
     if (widget.isAnimating || widget.smallLike) {
       await controller.forward();
       await controller.reverse();
-      await Future.delayed(const Duration(milliseconds: 200));
+      await Future.delayed(const Duration(milliseconds: 150));
 
       if (widget.onEnd != null) {
         widget.onEnd!();

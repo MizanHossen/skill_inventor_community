@@ -15,10 +15,11 @@ pickImage(ImageSource source, BuildContext context) async {
 
   //print("No image selected");
 
-  // Fluttertoast.showToast(
-  //     msg: "No image selected", backgroundColor: primaryColor);
+  Fluttertoast.showToast(
+      msg: "No image selected", backgroundColor: primaryColor);
 
-  showSnackBar("No image selected :-)", context);
+  // ignore: use_build_context_synchronously
+  // showSnackBar("No image selected :-)", context);
 }
 
 showSnackBar(String content, BuildContext context) {
