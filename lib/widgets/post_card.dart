@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/models/user.dart';
 import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/resources/firestore_methods.dart';
+import 'package:skill_inventor_community/screen/comments_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/widgets/like_animation.dart';
 
@@ -164,7 +166,15 @@ class _PostCardState extends State<PostCard> {
                           )),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                  context,
+                  PageTransition(
+                    child: CommentsScreen(
+                      snap: widget.snap,
+                    ),
+                    type: PageTransitionType.bottomToTop,
+                  ),
+                ),
                 icon: const Icon(
                   Icons.comment_outlined,
                   color: secondaryColor,
