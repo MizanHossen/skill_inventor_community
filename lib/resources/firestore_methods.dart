@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/models/posts.dart';
 import 'package:skill_inventor_community/resources/storage_method.dart';
 import 'package:uuid/uuid.dart';
+
+import '../models/user.dart';
+import '../providers/user_provider.dart';
 
 class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -111,6 +115,15 @@ class FirestoreMethods {
           'likes': FieldValue.arrayUnion([uid]),
         });
       }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+  // deleting post
+
+  Future<void> deletePost(String postId) async {
+    try {
+      await _firestore.collection("posts").doc(postId).delete();
     } catch (e) {
       print(e.toString());
     }

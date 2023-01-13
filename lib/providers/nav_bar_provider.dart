@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skill_inventor_community/screen/add_post_screen.dart';
 import 'package:skill_inventor_community/screen/feed_screen.dart';
+import 'package:skill_inventor_community/screen/search_screen.dart';
 
 class NavBarProvider with ChangeNotifier {
   List<NavBar> items = [
@@ -12,7 +13,7 @@ class NavBarProvider with ChangeNotifier {
     NavBar(
       level: "",
       iconData: Icons.search,
-      widget: const Center(child: Text("search")),
+      widget: const SearchScreen(),
     ),
     NavBar(
       level: "",

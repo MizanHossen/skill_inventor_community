@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
@@ -7,6 +8,7 @@ import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/resources/firestore_methods.dart';
 import 'package:skill_inventor_community/screen/comments_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
+import 'package:skill_inventor_community/utils/utils.dart';
 import 'package:skill_inventor_community/widgets/like_animation.dart';
 
 class PostCard extends StatefulWidget {
@@ -23,6 +25,43 @@ class PostCard extends StatefulWidget {
 
 class _PostCardState extends State<PostCard> {
   bool isLikeAnimating = false;
+  int commentLen = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getComments();
+  }
+
+  void getComments() async {
+    try {
+      QuerySnapshot snap = await FirebaseFirestore.instance
+          .collection("posts")
+          .doc(widget.snap["postId"])
+          .collection("comments")
+          .get();
+
+      // Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+      //     .collection("users")
+      //     .doc(widget.snap["postId"])
+      //     .collection("comments")
+      //     .snapshots();
+
+      commentLen = snap.docs.length;
+
+      setState(() {
+        commentLen == commentLen;
+      });
+    } catch (e) {
+      //showSnackBar(e.toString(), context);
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    getComments();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +110,11 @@ class _PostCardState extends State<PostCard> {
                           children: ["Delete", "Report"]
                               .map(
                                 (e) => InkWell(
-                                  onTap: () {},
+                                  onTap: () async {
+                                    FirestoreMethods()
+                                        .deletePost(widget.snap["postId"]);
+                                    Navigator.of(context).pop();
+                                  },
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 15,
@@ -239,11 +282,19 @@ class _PostCardState extends State<PostCard> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            child: CommentsScreen(
+                              snap: widget.snap,
+                            ),
+                            type: PageTransitionType.bottomToTop));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      "View all 220 comments",
+                      "View all $commentLen  comments",
                       style: kSubTextStyle.copyWith(
                           color: primaryColor.withOpacity(0.7)),
                     ),

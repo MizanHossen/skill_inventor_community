@@ -68,29 +68,26 @@ class _CommentCardState extends State<CommentCard> {
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () async {
-                await FirestoreMethods().likeComment(
-                  widget.snap['postId'],
-                  widget.snap['commentId'],
-                  user!.uid,
-                  widget.snap['likes'],
-                );
-              },
-              icon: widget.snap['likes'].contains(user?.uid)
-                  ? const Icon(
-                      Icons.favorite,
-                      color: primaryColor,
-                    )
-                  : const Icon(
-                      Icons.favorite_border,
-                      color: primaryColor,
-                    ),
-            ),
-          )
+          IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () async {
+              await FirestoreMethods().likeComment(
+                widget.snap['postId'],
+                widget.snap['commentId'],
+                user!.uid,
+                widget.snap['likes'],
+              );
+            },
+            icon: widget.snap['likes'].contains(user?.uid)
+                ? const Icon(
+                    Icons.favorite,
+                    color: primaryColor,
+                  )
+                : const Icon(
+                    Icons.favorite_border,
+                    color: primaryColor,
+                  ),
+          ),
         ],
       ),
     );
