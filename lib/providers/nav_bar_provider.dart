@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:skill_inventor_community/screen/add_post_screen.dart';
 import 'package:skill_inventor_community/screen/feed_screen.dart';
+import 'package:skill_inventor_community/screen/profile_screen.dart';
 import 'package:skill_inventor_community/screen/search_screen.dart';
 
 class NavBarProvider with ChangeNotifier {
@@ -28,7 +30,9 @@ class NavBarProvider with ChangeNotifier {
     NavBar(
       level: "",
       iconData: Icons.person,
-      widget: const Center(child: Text("profile")),
+      widget: ProfileScreen(
+        uid: FirebaseAuth.instance.currentUser!.uid,
+      ),
     ),
   ];
 

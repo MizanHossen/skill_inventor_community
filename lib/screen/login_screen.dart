@@ -159,8 +159,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: Responsive.isMobile(context)
                         ? double.infinity
                         : Responsive.isTablet(context)
-                            ? MediaQuery.of(context).size.width * 0.7
-                            : MediaQuery.of(context).size.width * 0.5,
+                            ? MediaQuery.of(context).size.width * 0.6
+                            : MediaQuery.of(context).size.width * 0.4,
                     child: TextFieldInput(
                       textEditingController: _emailController,
                       hintText: "Enter Your email",
@@ -176,8 +176,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: Responsive.isMobile(context)
                         ? double.infinity
                         : Responsive.isTablet(context)
-                            ? MediaQuery.of(context).size.width * 0.7
-                            : MediaQuery.of(context).size.width * 0.5,
+                            ? MediaQuery.of(context).size.width * 0.6
+                            : MediaQuery.of(context).size.width * 0.4,
                     child: TextField(
                       controller: _passwordController,
                       keyboardType: TextInputType.emailAddress,
@@ -215,8 +215,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: Responsive.isMobile(context)
                           ? double.infinity
                           : Responsive.isTablet(context)
-                              ? MediaQuery.of(context).size.width * 0.7
-                              : MediaQuery.of(context).size.width * 0.5,
+                              ? MediaQuery.of(context).size.width * 0.6
+                              : MediaQuery.of(context).size.width * 0.4,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: const ShapeDecoration(

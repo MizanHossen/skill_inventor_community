@@ -3,6 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:skill_inventor_community/responsive/responsive.dart';
+import 'package:skill_inventor_community/screen/profile_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -69,12 +72,20 @@ class _SearchScreenState extends State<SearchScreen> {
                 return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            snapshot.data!.docs[index]["photoUrl"]),
+                    return InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                              child: ProfileScreen(
+                                  uid: snapshot.data!.docs[index]["uid"]),
+                              type: PageTransitionType.fade)),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              snapshot.data!.docs[index]["photoUrl"]),
+                        ),
+                        title: Text(snapshot.data!.docs[index]["username"]),
                       ),
-                      title: Text(snapshot.data!.docs[index]["username"]),
                     );
                   },
                 );
@@ -96,12 +107,22 @@ class _SearchScreenState extends State<SearchScreen> {
                     snapshot.data!.docs[index]["postUrl"],
                     fit: BoxFit.cover,
                   ),
-                  staggeredTileBuilder: (index) => StaggeredTile.count(
-                    (index % 7 == 0) ? 2 : 1,
-                    (index % 7 == 0) ? 2 : 1,
-                  ),
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
+                  staggeredTileBuilder: (index) => Responsive.isMobile(context)
+                      ? StaggeredTile.count(
+                          (index % 7 == 0) ? 2 : 1,
+                          (index % 7 == 0) ? 2 : 1,
+                        )
+                      : Responsive.isTablet(context)
+                          ? StaggeredTile.count(
+                              (index % 7 == 0) ? 1 : 1,
+                              (index % 7 == 0) ? 1 : 1,
+                            )
+                          : StaggeredTile.count(
+                              (index % 5 == 0) ? 1 : 1,
+                              (index % 5 == 0) ? 1 : 1,
+                            ),
+                  mainAxisSpacing: Responsive.isMobile(context) ? 8 : 18,
+                  crossAxisSpacing: Responsive.isMobile(context) ? 8 : 18,
                 );
               },
             ),
