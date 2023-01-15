@@ -6,7 +6,6 @@ import 'package:skill_inventor_community/screen/login_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
 import 'package:skill_inventor_community/widgets/text_field_input.dart';
-
 import '../responsive/responsive.dart';
 
 class SignupScreen extends StatefulWidget {

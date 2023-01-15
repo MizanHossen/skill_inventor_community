@@ -8,9 +8,9 @@ import 'package:skill_inventor_community/screen/search_screen.dart';
 const webScreenSize = 500;
 
 final homeScreenItems = [
-  FeedScreen(),
-  SearchScreen(),
-  AddPostScreen(),
-  Center(child: Text("Under construction")),
+  const FeedScreen(),
+  const SearchScreen(),
+  const AddPostScreen(),
+  const Center(child: Text("Under construction")),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
 ];

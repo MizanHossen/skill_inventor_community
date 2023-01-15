@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/colors.dart';
 import '../utils/global_variables.dart';
 
@@ -91,8 +90,8 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: homeScreenItems,
         onPageChanged: onPageChanged,
+        children: homeScreenItems,
       ),
     );
   }

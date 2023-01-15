@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:skill_inventor_community/resources/auth_methods.dart';
@@ -8,7 +7,6 @@ import 'package:skill_inventor_community/screen/signup_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
 import 'package:skill_inventor_community/widgets/text_field_input.dart';
-
 import '../responsive/mobile_screen_layout.dart';
 import '../responsive/responsive_layout_screen.dart';
 import '../responsive/web_screen_layout.dart';

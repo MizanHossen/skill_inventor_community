@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../responsive/responsive.dart';
 
 class FollowButton extends StatelessWidget {

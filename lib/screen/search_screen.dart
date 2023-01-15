@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:page_transition/page_transition.dart';
@@ -35,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 isShowUsers = false;
               });
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,
             )),

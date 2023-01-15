@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/resources/firestore_methods.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
-
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 import '../widgets/comment_card.dart';

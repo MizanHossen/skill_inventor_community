@@ -89,9 +89,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ? TextButton(
                                 onPressed: () async {
                                   await AuthMethods().signOut();
+                                  // ignore: use_build_context_synchronously
                                   Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(
-                                    builder: (context) => LoginScreen(),
+                                    builder: (context) => const LoginScreen(),
                                   ));
                                 },
                                 child: const Text(
@@ -197,9 +198,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ? Expanded(
                                               child: Container(
                                                 height: 35,
-                                                margin:
-                                                    EdgeInsets.only(top: 30),
-                                                padding: EdgeInsets.all(5),
+                                                margin: const EdgeInsets.only(
+                                                    top: 30),
+                                                padding:
+                                                    const EdgeInsets.all(5),
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),

@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/foundation.dart';
-
 import 'package:skill_inventor_community/models/posts.dart';
 import 'package:skill_inventor_community/resources/storage_method.dart';
 import 'package:uuid/uuid.dart';
