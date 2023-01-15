@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
@@ -65,7 +66,7 @@ class _PostCardState extends State<PostCard> {
 
   @override
   Widget build(BuildContext context) {
-    final User? user = Provider.of<UserProvider>(context).getUser;
+    final user = Provider.of<UserProvider>(context).getUser;
 
     return Container(
       color: mobileBackgroundColor,
@@ -107,12 +108,30 @@ class _PostCardState extends State<PostCard> {
                         child: ListView(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           shrinkWrap: true,
-                          children: ["Delete", "Report"]
+                          children: ["Delete"]
                               .map(
                                 (e) => InkWell(
                                   onTap: () async {
-                                    FirestoreMethods()
-                                        .deletePost(widget.snap["postId"]);
+                                    if (FirebaseAuth
+                                            .instance.currentUser!.uid ==
+                                        widget.snap["uid"]) {
+                                      FirestoreMethods()
+                                          .deletePost(widget.snap["postId"]);
+                                      showSnackBar(
+                                          "Deleted successfully", context);
+                                    } else {
+                                      showSnackBar(
+                                          "Can't Delete another user's post",
+                                          context);
+                                    }
+
+                                    // FirebaseAuth.instance.currentUser!.uid ==
+                                    //         widget.snap["uid"]
+                                    //     ? FirestoreMethods()
+                                    //         .deletePost(widget.snap["postId"])
+                                    //     : showSnackBar(
+                                    //         "Can't Delete another user post",
+                                    //         context);
                                     Navigator.of(context).pop();
                                   },
                                   child: Container(

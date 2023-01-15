@@ -14,7 +14,7 @@ class NavBarProvider with ChangeNotifier {
     ),
     NavBar(
       level: "",
-      iconData: Icons.search,
+      iconData: Icons.manage_search,
       widget: const SearchScreen(),
     ),
     NavBar(
@@ -24,8 +24,8 @@ class NavBarProvider with ChangeNotifier {
     ),
     NavBar(
       level: "",
-      iconData: Icons.favorite,
-      widget: const Center(child: Text("favorite")),
+      iconData: Icons.local_mall,
+      widget: const Center(child: Text("Under construction")),
     ),
     NavBar(
       level: "",

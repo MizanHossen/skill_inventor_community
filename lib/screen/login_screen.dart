@@ -60,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
         animationType = "success";
       });
       Timer(const Duration(seconds: 2), () async {
+        Navigator.popUntil(context, (route) => route.isFirst);
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
             mobileScreenLayout: MobileScreenLayout(),

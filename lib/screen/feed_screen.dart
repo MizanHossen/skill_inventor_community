@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:skill_inventor_community/responsive/responsive.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/global_variables.dart';
+import 'package:skill_inventor_community/utils/utils.dart';
 import '../widgets/post_card.dart';
 
 class FeedScreen extends StatelessWidget {
@@ -27,7 +28,9 @@ class FeedScreen extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showSnackBar("Under construction :-) ", context);
+                  },
                   icon: const ImageIcon(
                     AssetImage("assets/images/message.png"),
                     color: primaryColor,

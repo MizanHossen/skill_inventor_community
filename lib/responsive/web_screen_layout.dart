@@ -60,7 +60,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
           ),
           IconButton(
             onPressed: () => navigationTapped(1),
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.manage_search),
             color: _page == 1 ? primaryColor : secondaryColor,
           ),
           IconButton(
@@ -70,7 +70,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
           ),
           IconButton(
             onPressed: () => navigationTapped(3),
-            icon: const Icon(Icons.favorite),
+            icon: const Icon(Icons.local_mall),
             color: _page == 3 ? primaryColor : secondaryColor,
           ),
           IconButton(

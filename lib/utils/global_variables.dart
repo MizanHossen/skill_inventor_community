@@ -11,6 +11,6 @@ final homeScreenItems = [
   FeedScreen(),
   SearchScreen(),
   AddPostScreen(),
-  Center(child: Text("favorite")),
+  Center(child: Text("Under construction")),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
 ];
