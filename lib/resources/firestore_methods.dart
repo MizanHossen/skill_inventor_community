@@ -125,6 +125,21 @@ class FirestoreMethods {
     }
   }
 
+  // deleting commnet
+
+  Future<void> deleteComment(String postId, String commentId) async {
+    try {
+      await _firestore
+          .collection("posts")
+          .doc(postId)
+          .collection("comments")
+          .doc(commentId)
+          .delete();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   // follow
 
   Future<void> followUser(String uid, String followId) async {

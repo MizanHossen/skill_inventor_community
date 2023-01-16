@@ -36,25 +36,28 @@ class _CommentsScreenState extends State<CommentsScreen> {
         title: const Text("Comments"),
         centerTitle: false,
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("posts")
-            .doc(widget.snap["postId"])
-            .collection("comments")
-            .orderBy("datePublished", descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-                child: CircularProgressIndicator(color: primaryColor));
-          }
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection("posts")
+              .doc(widget.snap["postId"])
+              .collection("comments")
+              .orderBy("datePublished", descending: true)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                  child: CircularProgressIndicator(color: primaryColor));
+            }
 
-          return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) => CommentCard(
-                    snap: snapshot.data!.docs[index].data(),
-                  ));
-        },
+            return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) => CommentCard(
+                      snap: snapshot.data!.docs[index].data(),
+                    ));
+          },
+        ),
       ),
 
       //Bottom Comment field
