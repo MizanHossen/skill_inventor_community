@@ -169,4 +169,20 @@ class FirestoreMethods {
       print(e.toString());
     }
   }
+
+  //get time ago
+  String getTimeAgo(DateTime postTime) {
+    final duration = DateTime.now().difference(postTime);
+    if (duration.inSeconds <= 0) {
+      return "Just now";
+    } else if (duration.inSeconds < 60) {
+      return "${duration.inSeconds} secs ago";
+    } else if (duration.inMinutes < 60) {
+      return "${duration.inMinutes} mins ago";
+    } else if (duration.inHours < 24) {
+      return "${duration.inHours} hours ago";
+    } else {
+      return "${duration.inDays} days ago";
+    }
+  }
 }

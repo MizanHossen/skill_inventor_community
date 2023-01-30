@@ -58,9 +58,11 @@ class _CommentCardState extends State<CommentCard> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Text(
-                      DateFormat.yMMMd().format(
-                        widget.snap["datePublished"].toDate(),
-                      ),
+                      // DateFormat.yMMMd().format(
+                      //   widget.snap["datePublished"].toDate(),
+                      // ),
+                      FirestoreMethods()
+                          .getTimeAgo(widget.snap["datePublished"].toDate()),
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,

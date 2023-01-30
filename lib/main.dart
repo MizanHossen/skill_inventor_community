@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/providers/nav_bar_provider.dart';
+import 'package:skill_inventor_community/providers/refresh_provider.dart';
 import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/responsive/mobile_screen_layout.dart';
 import 'package:skill_inventor_community/responsive/responsive_layout_screen.dart';
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
         ChangeNotifierProvider<NavBarProvider>(create: (_) => NavBarProvider()),
+        ChangeNotifierProvider<RefreshNotifier>(
+            create: (_) => RefreshNotifier()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
