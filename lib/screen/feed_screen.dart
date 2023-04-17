@@ -17,7 +17,7 @@ class FeedScreen extends StatelessWidget {
     final refreshNotifire = Provider.of<RefreshNotifier>(context);
     return Scaffold(
       backgroundColor:
-          width > webScreenSize ? webBackgroundColor : Color(0xffECF0F3),
+          width > webScreenSize ? webBackgroundColor : const Color(0xffECF0F3),
       appBar: width > webScreenSize
           ? null
           : AppBar(
