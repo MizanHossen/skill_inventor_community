@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skill_inventor_community/utils/colors.dart';
+import 'package:skill_inventor_community/widgets/drop_container.dart';
 import '../responsive/responsive.dart';
 
 class FollowButton extends StatelessWidget {
@@ -19,26 +21,34 @@ class FollowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: Responsive.isMobile(context)
-          ? const EdgeInsets.only(top: 15)
-          : Responsive.isMobile(context)
-              ? const EdgeInsets.only(top: 30)
-              : const EdgeInsets.only(top: 35),
-      child: TextButton(
-        onPressed: function,
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.56,
-          height: Responsive.isMobile(context) ? 30 : 35,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            border: Border.all(color: borderColor),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+    return DropContainer(
+      child: Container(
+        // margin: Responsive.isMobile(context)
+        //     ? const EdgeInsets.only(top: 15)
+        //     : Responsive.isMobile(context)
+        //         ? const EdgeInsets.only(top: 30)
+        //         : const EdgeInsets.only(top: 35),
+        // padding: Responsive.isMobile(context)
+        //     ? const EdgeInsets.only(top: 15)
+        //     : Responsive.isMobile(context)
+        //         ? const EdgeInsets.only(top: 30)
+        //         : const EdgeInsets.only(top: 35),
+        child: TextButton(
+          onPressed: function,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.56,
+            height: Responsive.isMobile(context) ? 30 : 35,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              border: Border.all(color: borderColor),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              text,
+              style:
+                  TextStyle(color: hintTextColor, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),

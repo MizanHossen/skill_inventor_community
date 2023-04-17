@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/providers/nav_bar_provider.dart';
+import 'package:skill_inventor_community/providers/navbar_screen_provider.dart';
 import 'package:skill_inventor_community/providers/refresh_provider.dart';
 import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/responsive/mobile_screen_layout.dart';
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+        ChangeNotifierProvider<NavBarScreenProvider>(
+            create: (_) => NavBarScreenProvider()),
         ChangeNotifierProvider<NavBarProvider>(create: (_) => NavBarProvider()),
         ChangeNotifierProvider<RefreshNotifier>(
             create: (_) => RefreshNotifier()),
@@ -58,10 +61,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Skil Inventor Community",
-        theme: ThemeData.dark().copyWith(
+        theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
         // home: const LoginScreen(),
+        //home: DemoDesign()
+
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -116,6 +121,126 @@ class MyApp extends StatelessWidget {
             return const LoginScreen();
           },
         ),
+      ),
+    );
+  }
+}
+
+class DemoDesign extends StatelessWidget {
+  const DemoDesign({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xffECF0F3),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: 100,
+            width: 300,
+            decoration: BoxDecoration(
+                color: const Color(0xffECF0F3),
+                borderRadius: BorderRadius.circular(120),
+                boxShadow: const [
+                  //bottom right shadow is darker shadow
+                  BoxShadow(
+                      color: Color(0xffDCE2EA),
+                      offset: const Offset(3, 3),
+                      blurRadius: 10,
+                      spreadRadius: 1),
+
+                  //top left shaow lighter
+                  const BoxShadow(
+                    color: Color(0xffF5F7F9),
+                    offset: Offset(-5, -5),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ]),
+            // child: const CircleAvatar(
+            //   backgroundColor: Color(0xffF4F4F4),
+            //   radius: 120,
+            //   child: CircleAvatar(
+            //     backgroundColor: Color(0xffF4F4F4),
+            //     radius: 100,
+            //   ),
+            // ),
+          ),
+          SizedBox(height: 50),
+          Container(
+            height: 100,
+            width: 300,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Color(0xffECF0F3),
+                borderRadius: BorderRadius.circular(120),
+                boxShadow: [
+                  //bottom right shadow is darker shadow
+                  BoxShadow(
+                    blurStyle: BlurStyle.inner,
+                    color: Color(0xffF4F6F8),
+                    offset: const Offset(5, 5),
+                    blurRadius: 10,
+                    //spreadRadius: 1,
+                  ),
+
+                  //top left shaow lighter
+                  const BoxShadow(
+                    blurStyle: BlurStyle.inner,
+                    //color: Color(0xFFbebebe),
+                    color: Color(0xFFE4E8ED),
+                    offset: Offset(-5, -5),
+                    blurRadius: 5,
+                    // spreadRadius: 1,
+                  ),
+                ]),
+            // child: const CircleAvatar(
+            //   backgroundColor: Color(0xffF4F4F4),
+            //   radius: 120,
+            //   child: CircleAvatar(
+            //     backgroundColor: Color(0xffF4F4F4),
+            //     radius: 100,
+            //   ),
+            // ),
+          ),
+          SizedBox(height: 50),
+          Container(
+            height: 100,
+            width: 300,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(120),
+                boxShadow: [
+                  //bottom right shadow is darker shadow
+                  BoxShadow(
+                    color: Color(0xffffffff),
+                    offset: const Offset(-5, -5),
+                    blurRadius: 5,
+                    //spreadRadius: 1,
+                  ),
+
+                  //top left shaow lighter
+                  const BoxShadow(
+                    color: Color(0xFFbebebe),
+                    offset: Offset(5, 5),
+                    blurRadius: 5,
+                    // spreadRadius: 1,
+                  ),
+                ]),
+            // child: const CircleAvatar(
+            //   backgroundColor: Color(0xffF4F4F4),
+            //   radius: 120,
+            //   child: CircleAvatar(
+            //     backgroundColor: Color(0xffF4F4F4),
+            //     radius: 100,
+            //   ),
+            // ),
+          ),
+          SizedBox(height: 50),
+        ],
       ),
     );
   }

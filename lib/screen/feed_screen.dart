@@ -17,18 +17,25 @@ class FeedScreen extends StatelessWidget {
     final refreshNotifire = Provider.of<RefreshNotifier>(context);
     return Scaffold(
       backgroundColor:
-          width > webScreenSize ? webBackgroundColor : mobileBackgroundColor,
+          width > webScreenSize ? webBackgroundColor : Color(0xffECF0F3),
       appBar: width > webScreenSize
           ? null
           : AppBar(
+              elevation: 0,
               backgroundColor: width > webScreenSize
                   ? webBackgroundColor
                   : mobileBackgroundColor,
               centerTitle: false,
-              title: Image.asset(
-                "assets/images/sk_logo.png",
-                width: MediaQuery.of(context).size.width * 0.4,
+              title: Text(
+                "Skill-Inventor",
+                style: kHeadingTextStyle.copyWith(
+                    color: boldTextColor, fontWeight: FontWeight.bold),
               ),
+
+              //  Image.asset(
+              //   "assets/images/sk_logo.png",
+              //   width: MediaQuery.of(context).size.width * 0.4,
+              // ),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -36,7 +43,7 @@ class FeedScreen extends StatelessWidget {
                   },
                   icon: const ImageIcon(
                     AssetImage("assets/images/message.png"),
-                    color: primaryColor,
+                    color: hintTextColor,
                     size: 50,
                   ),
                 ),

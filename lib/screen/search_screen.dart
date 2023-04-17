@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:skill_inventor_community/responsive/responsive.dart';
 import 'package:skill_inventor_community/screen/profile_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
+import 'package:skill_inventor_community/widgets/drop_container.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -35,7 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
             },
             icon: const Icon(
               Icons.arrow_back,
-              color: primaryColor,
+              color: Colors.black,
             )),
         elevation: 0,
         backgroundColor: mobileBackgroundColor,
@@ -101,9 +102,18 @@ class _SearchScreenState extends State<SearchScreen> {
                   physics: const BouncingScrollPhysics(),
                   crossAxisCount: 3,
                   itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) => Image.network(
-                    snapshot.data!.docs[index]["postUrl"],
-                    fit: BoxFit.cover,
+                  itemBuilder: (context, index) => Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              snapshot.data!.docs[index]["postUrl"],
+                            ))),
+                    // child: Image.network(
+                    //   snapshot.data!.docs[index]["postUrl"],
+                    //   fit: BoxFit.cover,
+                    // ),
                   ),
                   staggeredTileBuilder: (index) => Responsive.isMobile(context)
                       ? StaggeredTile.count(

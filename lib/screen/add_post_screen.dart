@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:skill_inventor_community/models/user.dart';
@@ -7,6 +8,7 @@ import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/resources/firestore_methods.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
+import 'package:skill_inventor_community/widgets/drop_container.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -42,8 +44,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
           _isLoading = false;
         });
         // ignore: use_build_context_synchronously
-        showSnackBar("Posted", context);
+        // showSnackBar("Posted", context);
+        Fluttertoast.showToast(msg: "Posted", backgroundColor: hintTextColor);
         clearImage();
+        _descriptionController.clear();
       } else {
         setState(() {
           _isLoading = false;
@@ -69,7 +73,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         return SimpleDialog(
           title: const Text(
             "Create a Post",
-            style: TextStyle(color: primaryColor),
+            style: TextStyle(color: boldTextColor),
           ),
           children: [
             SimpleDialogOption(
@@ -99,7 +103,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               padding: const EdgeInsets.all(20),
               child: const Text(
                 "Cancel",
-                style: TextStyle(color: primaryColor),
+                style: TextStyle(color: hintTextColor),
               ),
               onPressed: () async {
                 Navigator.of(context).pop();
@@ -133,11 +137,18 @@ class _AddPostScreenState extends State<AddPostScreen> {
         : Scaffold(
             appBar: AppBar(
               backgroundColor: mobileBackgroundColor,
+              elevation: 0,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: hintTextColor,
+                ),
                 onPressed: clearImage,
               ),
-              title: const Text("Post to"),
+              title: const Text(
+                "Post to",
+                style: kHeadingTextStyle,
+              ),
               centerTitle: false,
               actions: [
                 TextButton(
@@ -149,7 +160,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     child: const Text(
                       "Post",
                       style: TextStyle(
-                        color: primaryColor,
+                        color: hintTextColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -164,42 +175,47 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         padding: EdgeInsets.only(top: 0),
                       ),
                 const Divider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(user!.photoUrl),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      child: TextField(
-                        controller: _descriptionController,
-                        decoration: const InputDecoration(
-                          hintText: "Write a caption....",
-                          border: InputBorder.none,
+                DropContainer(
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(user!.photoUrl),
                         ),
-                        maxLines: 8,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 45,
-                      width: 45,
-                      child: AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: MemoryImage(_file!),
-                              fit: BoxFit.fill,
-                              alignment: FractionalOffset.topCenter,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          child: TextField(
+                            controller: _descriptionController,
+                            decoration: const InputDecoration(
+                              hintText: "Write a caption....",
+                              border: InputBorder.none,
+                            ),
+                            maxLines: 8,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 45,
+                          width: 45,
+                          child: AspectRatio(
+                            aspectRatio: 3 / 2,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: MemoryImage(_file!),
+                                  fit: BoxFit.fill,
+                                  alignment: FractionalOffset.topCenter,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                        //const Divider()
+                      ],
                     ),
-                    //const Divider()
-                  ],
+                  ),
                 )
               ],
             ),

@@ -7,6 +7,7 @@ import 'package:skill_inventor_community/screen/login_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/global_variables.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
+import 'package:skill_inventor_community/widgets/drop_container.dart';
 import 'package:skill_inventor_community/widgets/follow_button.dart';
 import 'package:skill_inventor_community/widgets/post_card.dart';
 
@@ -52,19 +53,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .get();
       postLen = postSnap.docs.length;
 
-      userData = userSnap.data()!;
-      followers = userSnap.data()!["followers"].length;
-      following = userSnap.data()!["following"].length;
-      isFollowing = userSnap
-          .data()!["followers"]
-          .contains(FirebaseAuth.instance.currentUser!.uid);
-      setState(() {});
+      if (mounted) {
+        userData = userSnap.data()!;
+        followers = userSnap.data()!["followers"].length;
+        following = userSnap.data()!["following"].length;
+        isFollowing = userSnap
+            .data()!["followers"]
+            .contains(FirebaseAuth.instance.currentUser!.uid);
+      }
     } catch (e) {
       showSnackBar(e.toString(), context);
     }
-    setState(() {
-      isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -81,8 +85,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               appBar: width > webScreenSize
                   ? null
                   : AppBar(
+                      automaticallyImplyLeading: false,
                       backgroundColor: mobileBackgroundColor,
-                      title: Text(userData["username"]),
+                      elevation: 0,
+                      leading: user != widget.uid
+                          ? IconButton(
+                              icon: const Icon(
+                                Icons.arrow_back_rounded,
+                                color: hintTextColor,
+                              ), // set your custom back icon here
+                              onPressed: () => Navigator.of(context).pop(),
+                            )
+                          : null,
+                      title: Text(
+                        userData["username"],
+                        style: kHeadingTextStyle.copyWith(color: boldTextColor),
+                      ),
                       centerTitle: false,
                       actions: [
                         user == widget.uid
@@ -97,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 },
                                 child: const Text(
                                   "LogOut",
-                                  style: TextStyle(color: primaryColor),
+                                  style: TextStyle(color: hintTextColor),
                                 ))
                             : Container(),
                       ],
@@ -146,6 +164,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ],
                                   ),
+                                  const SizedBox(height: 15),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
@@ -266,20 +285,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ? Expanded(
                           child: Column(
                             children: [
-                              const TabBar(
-                                indicatorColor: primaryColor,
+                              TabBar(
+                                indicatorColor: Colors.grey[400],
                                 indicatorWeight: 5,
-                                tabs: [
+                                tabs: const [
                                   Tab(
                                     icon: Icon(
                                       Icons.widgets,
-                                      color: primaryColor,
+                                      color: hintTextColor,
                                     ),
                                   ),
                                   Tab(
                                     icon: Icon(
                                       Icons.menu_open,
-                                      color: primaryColor,
+                                      color: hintTextColor,
                                     ),
                                   )
                                 ],
@@ -431,7 +450,7 @@ class BuildColumn extends StatelessWidget {
                       ? 20
                       : 25,
               fontWeight: FontWeight.w400,
-              color: primaryColor),
+              color: hintTextColor),
         )
       ],
     );

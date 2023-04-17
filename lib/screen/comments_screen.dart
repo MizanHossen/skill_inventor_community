@@ -32,8 +32,19 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: mobileBackgroundColor,
-        title: const Text("Comments"),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: hintTextColor,
+          ), // set your custom back icon here
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          "Comments",
+          style: kHeadingTextStyle.copyWith(color: boldTextColor),
+        ),
         centerTitle: false,
       ),
       body: GestureDetector(
@@ -48,7 +59,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                  child: CircularProgressIndicator(color: primaryColor));
+                  child: CircularProgressIndicator(color: hintTextColor));
             }
 
             return ListView.builder(
@@ -113,7 +124,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       : const Text(
                           "Post",
                           style: TextStyle(
-                            color: primaryColor,
+                            color: hintTextColor,
                           ),
                         ),
                 ),
