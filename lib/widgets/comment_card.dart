@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:skill_inventor_community/models/user.dart';
 import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
@@ -11,6 +9,7 @@ import 'package:skill_inventor_community/widgets/drop_container.dart';
 import '../resources/firestore_methods.dart';
 
 class CommentCard extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final snap;
   const CommentCard({super.key, this.snap});
 
@@ -24,7 +23,7 @@ class _CommentCardState extends State<CommentCard> {
     final user = Provider.of<UserProvider>(context).getUser;
 
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       child: DropContainer(
         child: Container(
           //alignment: Alignment.topCenter,

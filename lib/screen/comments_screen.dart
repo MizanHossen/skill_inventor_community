@@ -8,6 +8,7 @@ import '../providers/user_provider.dart';
 import '../widgets/comment_card.dart';
 
 class CommentsScreen extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final snap;
   const CommentsScreen({super.key, required this.snap});
 
@@ -18,7 +19,7 @@ class CommentsScreen extends StatefulWidget {
 class _CommentsScreenState extends State<CommentsScreen> {
   final TextEditingController _commentController = TextEditingController();
 
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   @override
   void dispose() {

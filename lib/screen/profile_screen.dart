@@ -7,7 +7,6 @@ import 'package:skill_inventor_community/screen/login_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/utils/global_variables.dart';
 import 'package:skill_inventor_community/utils/utils.dart';
-import 'package:skill_inventor_community/widgets/drop_container.dart';
 import 'package:skill_inventor_community/widgets/follow_button.dart';
 import 'package:skill_inventor_community/widgets/post_card.dart';
 
@@ -401,13 +400,12 @@ class ShowPost extends StatelessWidget {
           itemBuilder: (context, index) {
             DocumentSnapshot snap = snapshot.data!.docs[index];
 
-            return Container(
-                child: Image(
+            return Image(
               fit: BoxFit.cover,
               image: NetworkImage(
                 snap["postUrl"],
               ),
-            ));
+            );
           },
         );
       },
@@ -415,6 +413,7 @@ class ShowPost extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class BuildColumn extends StatelessWidget {
   int number;
   String label;

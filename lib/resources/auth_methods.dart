@@ -34,6 +34,7 @@ class AuthMethods {
           password.isNotEmpty ||
           username.isNotEmpty ||
           bio.isNotEmpty ||
+          // ignore: unnecessary_null_comparison
           file != null) {
         //register user
 
@@ -108,6 +109,7 @@ class AuthMethods {
     } catch (err) {
       res = err.toString();
     }
+    // ignore: avoid_print
     print(res.toString());
     //Fluttertoast.showToast(msg: 'Error Occurred: \n $res');
     return res;

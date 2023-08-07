@@ -1,11 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skill_inventor_community/providers/nav_bar_provider.dart';
 import 'package:skill_inventor_community/providers/navbar_screen_provider.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
-import 'package:skill_inventor_community/widgets/drop_container.dart';
 
 // class MobileScreenLayout extends StatelessWidget {
 //   const MobileScreenLayout({super.key});
@@ -108,6 +104,7 @@ import 'package:skill_inventor_community/widgets/drop_container.dart';
 // }
 
 class MobileScreenLayout extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MobileScreenLayout({Key? key});
 
   @override

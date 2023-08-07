@@ -118,6 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final InputBorder = OutlineInputBorder(
         borderSide: Divider.createBorderSide(context),
         borderRadius: BorderRadius.circular(5));
@@ -171,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
 
                       //text field for email
                       SizedBox(
@@ -327,7 +328,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 30)
+                      const SizedBox(height: 30)
                     ],
                   ),
                 ),

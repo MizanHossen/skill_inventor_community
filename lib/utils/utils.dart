@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
 import 'package:skill_inventor_community/widgets/drop_container.dart';
@@ -7,6 +6,7 @@ import 'package:skill_inventor_community/widgets/drop_container.dart';
 pickImage(ImageSource source, BuildContext context) async {
   final ImagePicker imagePicker = ImagePicker();
 
+  // ignore: no_leading_underscores_for_local_identifiers
   XFile? _file = await imagePicker.pickImage(source: source);
 
   if (_file != null) {

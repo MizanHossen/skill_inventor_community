@@ -5,7 +5,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:skill_inventor_community/responsive/responsive.dart';
 import 'package:skill_inventor_community/screen/profile_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
-import 'package:skill_inventor_community/widgets/drop_container.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

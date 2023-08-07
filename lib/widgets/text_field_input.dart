@@ -19,6 +19,7 @@ class TextFieldInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final InputBorder = OutlineInputBorder(
         borderSide: Divider.createBorderSide(context),
         borderRadius: BorderRadius.circular(5));

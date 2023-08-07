@@ -9,11 +9,11 @@ import 'package:skill_inventor_community/providers/user_provider.dart';
 import 'package:skill_inventor_community/resources/firestore_methods.dart';
 import 'package:skill_inventor_community/screen/comments_screen.dart';
 import 'package:skill_inventor_community/utils/colors.dart';
-import 'package:skill_inventor_community/utils/utils.dart';
 import 'package:skill_inventor_community/widgets/drop_container.dart';
 import 'package:skill_inventor_community/widgets/like_animation.dart';
 
 class PostCard extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final snap;
 
   const PostCard({
@@ -293,7 +293,7 @@ class _PostCardState extends State<PostCard> {
                   children: [
                     Text(
                       "${widget.snap['likes'].length} like's",
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           fontWeight: FontWeight.bold, color: hintTextColor),
                     ),
                     Container(
@@ -311,7 +311,7 @@ class _PostCardState extends State<PostCard> {
                             ),
                             TextSpan(
                                 text: "   ${widget.snap['description']} ",
-                                style: TextStyle(color: boldTextColor))
+                                style: const TextStyle(color: boldTextColor))
                           ],
                         ),
                       ),
@@ -334,16 +334,14 @@ class _PostCardState extends State<PostCard> {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Text(
-                        DateFormat.yMMMd().format(
-                          widget.snap['datePublished'].toDate(),
-                        ),
-                        style: kSubTextStyle.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12,
-                            color: hintTextColor),
+                    Text(
+                      DateFormat.yMMMd().format(
+                        widget.snap['datePublished'].toDate(),
                       ),
+                      style: kSubTextStyle.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          color: hintTextColor),
                     ),
                   ],
                 ),

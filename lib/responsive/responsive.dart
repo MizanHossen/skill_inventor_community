@@ -28,6 +28,7 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final Size _size = MediaQuery.of(context).size;
     if (_size.width >= 1024) {
       return desktop;

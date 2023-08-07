@@ -55,6 +55,7 @@ class FirestoreMethods {
         });
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }
@@ -81,10 +82,12 @@ class FirestoreMethods {
           "likes": [],
         });
       } else {
+        // ignore: avoid_print
         print("Text is empty");
         //showSnackBar("No image selected :-)", context);
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }
@@ -112,6 +115,7 @@ class FirestoreMethods {
         });
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }
@@ -121,6 +125,7 @@ class FirestoreMethods {
     try {
       await _firestore.collection("posts").doc(postId).delete();
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }
@@ -136,6 +141,7 @@ class FirestoreMethods {
           .doc(commentId)
           .delete();
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }
@@ -166,6 +172,7 @@ class FirestoreMethods {
         });
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
     }
   }

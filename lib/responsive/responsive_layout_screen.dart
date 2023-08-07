@@ -24,6 +24,7 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   }
 
   addData() async {
+    // ignore: no_leading_underscores_for_local_identifiers
     UserProvider _userProvider = Provider.of(context, listen: false);
 
     await _userProvider.refreshUser();
@@ -32,6 +33,7 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
+      // ignore: non_constant_identifier_names
       builder: (context, Constraints) {
         if (Constraints.maxWidth > webScreenSize) {
           // web screen

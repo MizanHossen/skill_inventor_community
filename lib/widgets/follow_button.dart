@@ -22,33 +22,22 @@ class FollowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropContainer(
-      child: Container(
-        // margin: Responsive.isMobile(context)
-        //     ? const EdgeInsets.only(top: 15)
-        //     : Responsive.isMobile(context)
-        //         ? const EdgeInsets.only(top: 30)
-        //         : const EdgeInsets.only(top: 35),
-        // padding: Responsive.isMobile(context)
-        //     ? const EdgeInsets.only(top: 15)
-        //     : Responsive.isMobile(context)
-        //         ? const EdgeInsets.only(top: 30)
-        //         : const EdgeInsets.only(top: 35),
-        child: TextButton(
-          onPressed: function,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.56,
-            height: Responsive.isMobile(context) ? 30 : 35,
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              border: Border.all(color: borderColor),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              text,
-              style:
-                  TextStyle(color: hintTextColor, fontWeight: FontWeight.bold),
-            ),
+      child: TextButton(
+        onPressed: function,
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.56,
+          height: Responsive.isMobile(context) ? 30 : 35,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            border: Border.all(color: borderColor),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style:
+                // ignore: prefer_const_constructors
+                TextStyle(color: hintTextColor, fontWeight: FontWeight.bold),
           ),
         ),
       ),
